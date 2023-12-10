@@ -9,9 +9,11 @@ from .models import Phone,Person
 from rest_framework.views import APIView
 from rest_framework.response import Response 
 from rest_framework import status
-
+from rest_framework_simplejwt import authentication  as jwt_authentication
 from .serializers import *
-from rest_framework import generics
+from rest_framework import generics,permissions,authentication
+
+
 # Create your views here.
 def test(request):
     print(request.method)
@@ -237,6 +239,9 @@ class APITest6(generics.ListCreateAPIView):
     # permission_classes = [Is]
 
 class APITest7(generics.RetrieveUpdateDestroyAPIView):
+    authentication_classes = [jwt_authentication.JWTAuthentication]
+    # permission_classes = [permissions.AllowAny]
+
     queryset = Person.objects.all()
     serializer_class = PersonModelSerializer
     def destroy(self, request, *args, **kwargs):
