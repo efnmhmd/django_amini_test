@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    <h1>
+        {{ name }}
+    </h1>
+    <h2>HTML Forms</h2>
+    
+    <form action="/app/test4/" method="POST">
+        {% csrf_token %}
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" value="John"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" value="Doe"><br><br>
+        <label for="phone">Phone:</label><br>
+        <input type="text" id="phone" name="phone" value="091"><br><br>
+        <input type="submit" value="Submit">
+    </form> 
+
+    <p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+
+    </body>
+</html>
